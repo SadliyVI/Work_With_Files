@@ -1,8 +1,8 @@
 # Работа с файлами
 # Формат CSV
 
-import csv
-from csv import DictReader
+# import csv
+# from csv import DictReader
 
 # utf-8, cp1251
 # Чтение файла построчно
@@ -49,50 +49,114 @@ from csv import DictReader
 
 # Запись файла
 
-with open('files/newsafr.csv', 'r', encoding = 'utf-8') as f:
-    reader = csv.reader(f)
-    new_list = list(reader)
-header = new_list.pop(0)
+# Диалект
+# Настройки для программиста
 
-# 'w' - write 'a' - append
-file_path = r'files\result.csv'
-with open (file_path, 'w', encoding = 'utf-8') as f:
-    writer = csv.writer(f)
-    writer.writerow(header)
-    # writer.writerows()
+# csv.register_dialect('csv_comma_no_quoting', delimiter = ',',
+#                        quoting = csv.QUOTE_NONE, escapechar = '\\')
+# # Настройки для аналитика
+# csv.register_dialect('csv_semicolon_all_quoting', delimiter = ';',
+#                        quoting = csv.QUOTE_ALL)
+#
+# with open('files/newsafr.csv', 'r', encoding = 'utf-8') as f:
+#     reader = csv.reader(f)
+#     new_list = list(reader)
+# header = new_list.pop(0)
+#
+# # 'w' - write 'a' - append
+# file_path = r'files\result.csv'
+# with open (file_path, 'w', encoding = 'utf-8') as f:
+#     writer = csv.writer(f)
+#     writer.writerow(header)
+#     # writer.writerows()
+#
+# with open (file_path, 'a', encoding = 'utf-8', newline = '') as f:
+#     writer = csv.writer(f)
+#     writer.writerow(header)
+#
+# with open (file_path, 'a', encoding = 'utf-8', newline = '') as f:
+#     writer = csv.writer(f)
+#     writer.writerow(header)
+#
+# with open (file_path, 'a', encoding = 'utf-8', newline = '') as f:
+#     writer = csv.writer(f)
+#     writer.writerow(header)
+#
+# with open(file_path, 'r', encoding = 'utf-8') as f:
+#     reader = csv.reader(f)
+#     for row in reader:
+#         print(row)
+#
+# with open (file_path, 'a', encoding = 'utf-8', newline = '') as f:
+#     writer = csv.writer(f)
+#     writer.writerows(new_list)
+#
+# with open(file_path, 'r', encoding = 'utf-8') as f:
+#     reader = csv.reader(f)
+#     for row in reader:
+#         print(row)
+#
+# # csv.QUOT_MINIMAL, csv.QUOT_ALL, csv.QUOT_NOME
+# with open (file_path, 'w', encoding = 'cp1251') as f:
+#     writer = csv.writer(f, delimiter = ';', quoting = csv.QUOTE_MINIMAL)
+#     writer.writerow(header)
+#
+# with open(file_path, 'r', encoding = 'utf-8') as f:
+#     reader = csv.reader(f)
+#     for row in reader:
+#         print(row)
+#
+# with open (file_path, 'w', encoding = 'cp1251') as f:
+#     writer = csv.writer(f, delimiter = ';', quoting = csv.QUOTE_NONE,
+#                         escapechar = '\\')
+#     writer.writerow(header)
+#
+# with open (file_path, 'r', encoding = 'cp1251') as f:
+#     reader = csv.reader(f, delimiter = ';', quoting = csv.QUOTE_NONE,
+#                         escapechar = '\\')
+#     for row in reader:
+#         print(row)
+#
+# with open (file_path, 'r', encoding = 'cp1251') as f:
+#     reader = csv.reader(f, dialect = 'csv_comma_no_quoting')
+#     for row in reader:
+#         print(row)
 
-with open (file_path, 'a', encoding = 'utf-8', newline = '') as f:
-    writer = csv.writer(f)
-    writer.writerow(header)
+# Формат JSON
 
-with open (file_path, 'a', encoding = 'utf-8', newline = '') as f:
-    writer = csv.writer(f)
-    writer.writerow(header)
+import json
+from pprint import pprint
 
-with open (file_path, 'a', encoding = 'utf-8', newline = '') as f:
-    writer = csv.writer(f)
-    writer.writerow(header)
+file_path_js = r'files\newfile.json'
 
-with open(file_path, 'r', encoding = 'utf-8') as f:
-    reader = csv.reader(f)
-    for row in reader:
-        print(row)
+with open(file_path_js, encoding = 'utf-8') as f:
+    data = json.load(f)
 
-with open (file_path, 'a', encoding = 'utf-8', newline = '') as f:
-    writer = csv.writer(f)
-    writer.writerows(new_list)
+# pprint(type(data))
+# pprint(data)
+# pprint(data['catalogs'][0]['offers'])
+# f.close()
 
-with open(file_path, 'r', encoding = 'utf-8') as f:
-    reader = csv.reader(f)
-    for row in reader:
-        print(row)
+# Запись в JSON
 
-# csv.QUOT_MINIMAL, csv.QUOT_ALL, csv.QUOT_NOME
-with open (file_path, 'w', encoding = 'cp1251') as f:
-    writer = csv.writer(f, delimiter = ';', quoting = csv.QUOTE_MINIMAL)
-    writer.writerow(header)
+# with open(r'files\result.json', 'w', encoding = 'utf-8') as f:
+#     data = json.dump(data, f, ensure_ascii = False, indent = 2)
 
-with open(file_path, 'r', encoding = 'utf-8') as f:
-    reader = csv.reader(f)
-    for row in reader:
-        print(row)
+# with open(r'files\result.json', encoding = 'utf-8') as f:
+#     data_2 = json.load(f)
+# pprint(data_2)
+
+with open(r'files\result.json', encoding = 'utf-8') as f:
+    data_3 = json.load(f)
+json_str = json.dumps(data_3, ensure_ascii = False)
+pprint(type(json_str))
+pprint(json_str)
+
+data_4 = json.loads(json_str)
+pprint(type(data_4))
+pprint(data_4)
+
+# Формат YAML
+
+# swagger OpenAPI
+# pip install pyyaml  - установка Yaml
