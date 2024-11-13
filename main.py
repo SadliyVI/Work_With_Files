@@ -49,6 +49,14 @@ from csv import DictReader
 
 # Запись файла
 
+# Диалект
+# Настройки для программиста
+csv.register_dialect('csv_comma_no_quoting', delimiter = ',',
+                       quoting = csv.QUOTE_NONE, escapechar = '\\')
+# Настройки для аналитика
+csv.register_dialect('csv_semicolon_all_quoting', delimiter = ';',
+                       quoting = csv.QUOTE_ALL)
+
 with open('files/newsafr.csv', 'r', encoding = 'utf-8') as f:
     reader = csv.reader(f)
     new_list = list(reader)
@@ -94,5 +102,21 @@ with open (file_path, 'w', encoding = 'cp1251') as f:
 
 with open(file_path, 'r', encoding = 'utf-8') as f:
     reader = csv.reader(f)
+    for row in reader:
+        print(row)
+
+with open (file_path, 'w', encoding = 'cp1251') as f:
+    writer = csv.writer(f, delimiter = ';', quoting = csv.QUOTE_NONE,
+                        escapechar = '\\')
+    writer.writerow(header)
+
+with open (file_path, 'r', encoding = 'cp1251') as f:
+    reader = csv.reader(f, delimiter = ';', quoting = csv.QUOTE_NONE,
+                        escapechar = '\\')
+    for row in reader:
+        print(row)
+
+with open (file_path, 'r', encoding = 'cp1251') as f:
+    reader = csv.reader(f, dialect = 'csv_comma_no_quoting')
     for row in reader:
         print(row)
