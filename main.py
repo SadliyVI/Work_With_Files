@@ -124,39 +124,48 @@
 
 # Формат JSON
 
-import json
-from pprint import pprint
-
-file_path_js = r'files\newfile.json'
-
-with open(file_path_js, encoding = 'utf-8') as f:
-    data = json.load(f)
-
-# pprint(type(data))
-# pprint(data)
-# pprint(data['catalogs'][0]['offers'])
-# f.close()
-
-# Запись в JSON
-
-# with open(r'files\result.json', 'w', encoding = 'utf-8') as f:
-#     data = json.dump(data, f, ensure_ascii = False, indent = 2)
-
+# import json
+# from pprint import pprint
+#
+# file_path_js = r'files\newfile.json'
+#
+# with open(file_path_js, encoding = 'utf-8') as f:
+#     data = json.load(f)
+#
+# # pprint(type(data))
+# # pprint(data)
+# # pprint(data['catalogs'][0]['offers'])
+# # f.close()
+#
+# # Запись в JSON
+#
+# # with open(r'files\result.json', 'w', encoding = 'utf-8') as f:
+# #     data = json.dump(data, f, ensure_ascii = False, indent = 2)
+#
+# # with open(r'files\result.json', encoding = 'utf-8') as f:
+# #     data_2 = json.load(f)
+# # pprint(data_2)
+#
 # with open(r'files\result.json', encoding = 'utf-8') as f:
-#     data_2 = json.load(f)
-# pprint(data_2)
-
-with open(r'files\result.json', encoding = 'utf-8') as f:
-    data_3 = json.load(f)
-json_str = json.dumps(data_3, ensure_ascii = False)
-pprint(type(json_str))
-pprint(json_str)
-
-data_4 = json.loads(json_str)
-pprint(type(data_4))
-pprint(data_4)
+#     data_3 = json.load(f)
+# json_str = json.dumps(data_3, ensure_ascii = False)
+# pprint(type(json_str))
+# pprint(json_str)
+#
+# data_4 = json.loads(json_str)
+# pprint(type(data_4))
+# pprint(data_4)
 
 # Формат YAML
 
 # swagger OpenAPI
 # pip install pyyaml  - установка Yaml
+
+1
+2
+3
+import json
+d = {"hello": "python", "goodbye": 'java'}
+result = json.dumps(d)
+print(type(result))
+print(result)
